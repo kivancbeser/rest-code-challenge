@@ -1,4 +1,4 @@
-package com.pixelbet.restcodechallenge.model;
+package com.practise.restcodechallenge.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.HashMap;

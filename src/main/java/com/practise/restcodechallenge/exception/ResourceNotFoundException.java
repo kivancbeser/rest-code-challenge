@@ -1,4 +1,4 @@
-package com.pixelbet.restcodechallenge.exception;
+package com.practise.restcodechallenge.exception;
 
 import org.springframework.http.HttpStatus;
 

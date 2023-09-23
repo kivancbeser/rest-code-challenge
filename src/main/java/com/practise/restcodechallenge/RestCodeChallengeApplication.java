@@ -1,4 +1,4 @@
-package com.pixelbet.restcodechallenge;
+package com.practise.restcodechallenge;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

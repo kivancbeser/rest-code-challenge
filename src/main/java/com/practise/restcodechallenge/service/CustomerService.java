@@ -1,11 +1,11 @@
-package com.pixelbet.restcodechallenge.service;
+package com.practise.restcodechallenge.service;
 
 import java.util.List;
-import com.pixelbet.restcodechallenge.conventer.ModelEntityConverter;
-import com.pixelbet.restcodechallenge.entity.CustomerEntity;
-import com.pixelbet.restcodechallenge.exception.ResourceNotFoundException;
-import com.pixelbet.restcodechallenge.model.CustomerModel;
-import com.pixelbet.restcodechallenge.repository.CustomerRepository;
+import com.practise.restcodechallenge.conventer.ModelEntityConverter;
+import com.practise.restcodechallenge.entity.CustomerEntity;
+import com.practise.restcodechallenge.exception.ResourceNotFoundException;
+import com.practise.restcodechallenge.model.CustomerModel;
+import com.practise.restcodechallenge.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

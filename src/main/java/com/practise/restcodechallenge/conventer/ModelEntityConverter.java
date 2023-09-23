@@ -1,4 +1,4 @@
-package com.pixelbet.restcodechallenge.conventer;
+package com.practise.restcodechallenge.conventer;
 
 import java.util.List;
 import java.util.stream.Collectors;

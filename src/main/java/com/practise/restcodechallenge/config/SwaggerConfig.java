@@ -1,4 +1,4 @@
-package com.pixelbet.restcodechallenge.config;
+package com.practise.restcodechallenge.config;
 
 import static springfox.documentation.builders.RequestHandlerSelectors.withClassAnnotation;
 

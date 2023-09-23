@@ -1,4 +1,4 @@
-package com.pixelbet.restcodechallenge.model;
+package com.practise.restcodechallenge.model;
 
 import java.util.List;
 import lombok.AllArgsConstructor;

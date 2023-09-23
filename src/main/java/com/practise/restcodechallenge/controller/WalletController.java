@@ -1,13 +1,12 @@
-package com.pixelbet.restcodechallenge.controller;
+package com.practise.restcodechallenge.controller;
 
 
-import com.pixelbet.restcodechallenge.model.Response;
-import com.pixelbet.restcodechallenge.model.TransactionModel;
-import com.pixelbet.restcodechallenge.service.WalletService;
+import com.practise.restcodechallenge.model.Response;
+import com.practise.restcodechallenge.model.TransactionModel;
+import com.practise.restcodechallenge.service.WalletService;
 import io.swagger.annotations.Api;
 import jakarta.validation.Valid;
 
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

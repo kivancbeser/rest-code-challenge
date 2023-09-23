@@ -1,4 +1,4 @@
-package com.pixelbet.restcodechallenge.config;
+package com.practise.restcodechallenge.config;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

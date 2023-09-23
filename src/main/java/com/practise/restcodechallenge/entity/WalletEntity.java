@@ -1,4 +1,4 @@
-package com.pixelbet.restcodechallenge.entity;
+package com.practise.restcodechallenge.entity;
 
 import java.util.List;
 import jakarta.persistence.CascadeType;
