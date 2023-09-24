@@ -8,14 +8,14 @@
 		<version>3.1.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.pixelbet</groupId>
+	<groupId>com.practise</groupId>
 	<artifactId>rest-code-challenge</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>rest-code-challenge</name>
 	<description>rest-code-challenge</description>
 	<properties>
-		<maven.compiler.source>11</maven.compiler.source>
-		<maven.compiler.target>11</maven.compiler.target>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
 	</properties>
 	<dependencies>
 		<dependency>
