@@ -2,7 +2,9 @@ package com.practise.restcodechallenge.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.practise.restcodechallenge.entity.CustomerEntity;
+import com.practise.restcodechallenge.entity.WalletEntity;
 import com.practise.restcodechallenge.model.CustomerModel;
+import com.practise.restcodechallenge.model.WalletModel;
 import com.practise.restcodechallenge.repository.CustomerRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,12 +51,22 @@ public class CustomerControllerTest {
         customerModel.setName("test");
         customerModel.setMobileNumber("9876543210");
         customerModel.setEmail("test@gmail.com");
+        WalletModel walletModel = new WalletModel();
+        walletModel.setWalletId(1);
+        walletModel.setBalance(0);
+        customerModel.setWallet(walletModel);
+
 
         CustomerEntity customerEntity = new CustomerEntity();
         customerEntity.setId(1);
         customerEntity.setName("test");
         customerEntity.setMobileNumber("9876543210");
         customerEntity.setEmail("test@gmail.com");
+        WalletEntity walletEntity = new WalletEntity();
+        walletEntity.setId(1);
+        walletEntity.setBalance(0);
+        walletEntity.setCustomer(customerEntity);
+        customerEntity.setWallet(walletEntity);
         when(repository.save(any(CustomerEntity.class))).thenReturn(customerEntity);
 
         this.mockMvc.perform(post("/user")

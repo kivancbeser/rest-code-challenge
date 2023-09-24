@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -16,6 +17,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @ControllerAdvice
+@Slf4j
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     private final String DEFAULT_ERR_MSG = "Internal server error occurred. Please contact to admin.";
@@ -28,6 +30,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         setError(webRequest, BRS_ERR_MSG, exception.getMessage(), response);
         response.setStatus(exception.getHttpStatus().name());
         response.setStatusCode(exception.getHttpStatus().value());
+        logger.error("Error in handleAPIException" + exception.getMessage());
         exception.printStackTrace();
         return new ResponseEntity<>(response, exception.getHttpStatus());
     }
@@ -38,6 +41,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         exception.printStackTrace();
         Response response = Response.internalError();
         setError(webRequest, DEFAULT_ERR_MSG, exception.getMessage(), response);
+        logger.error("Error in handleGlobalException" + exception.getMessage());
         return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
