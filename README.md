@@ -117,8 +117,17 @@ http://localhost:8080/actuator
 ```
 3. Open swagger-ui to test the rest of the API application.
 ```sh
-http://localhost:8080/swagger-ui.html
+http://localhost:8080/swagger-ui/index.html#/
 ```
+3. Also you can check the database with H2 Console.
+```sh
+http://localhost:8080/h2-console
+```
+Username and Password
+```sh
+admin
+```
+
 
 <!-- Explore Rest APIs -->
 ## Explore Rest APIs
@@ -140,10 +149,12 @@ You can test them using Postman.
 * Added GlobalExceptionHandler
 * Added Unit Tests
 * Sonar Scan Report
+* Created Readme file
 <!-- TODO -->
 ## TODO
 * More comments for the spring side.
 * Add More Test Cases
+* 
 <!-- ROADMAP -->
 ## Roadmap
 
