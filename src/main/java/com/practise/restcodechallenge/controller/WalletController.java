@@ -1,12 +1,9 @@
 package com.practise.restcodechallenge.controller;
 
-
 import com.practise.restcodechallenge.model.Response;
 import com.practise.restcodechallenge.model.TransactionModel;
 import com.practise.restcodechallenge.service.WalletService;
-import io.swagger.annotations.Api;
 import jakarta.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api
 @RestController
 @RequestMapping("/wallet")
 public class WalletController {
