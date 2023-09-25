@@ -30,7 +30,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         setError(webRequest, BRS_ERR_MSG, exception.getMessage(), response);
         response.setStatus(exception.getHttpStatus().name());
         response.setStatusCode(exception.getHttpStatus().value());
-        logger.error("Error in handleAPIException" + exception.getMessage());
+        log.error("Error in handleAPIException" + exception.getMessage());
         exception.printStackTrace();
         return new ResponseEntity<>(response, exception.getHttpStatus());
     }
@@ -41,7 +41,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         exception.printStackTrace();
         Response response = Response.internalError();
         setError(webRequest, DEFAULT_ERR_MSG, exception.getMessage(), response);
-        logger.error("Error in handleGlobalException" + exception.getMessage());
+        log.error("Error in handleGlobalException" + exception.getMessage());
         return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 

@@ -18,46 +18,42 @@ public class WalletController {
 
     @Autowired
     WalletService walletService;
-
-    /**
-     * @param userId
-     * @return
-     */
-    @GetMapping("/{userId}")
-    public Response getTotalWalletAmountByUserId(@PathVariable Integer userId) {
-        return Response.ok().setPayload(walletService.getTotalWalletAmount(userId));
+    
+    @GetMapping("/{customerId}")
+    public Response getTotalWalletAmountByCustomerId(@PathVariable Integer customerId) {
+        return Response.ok().setPayload(walletService.getTotalWalletAmount(customerId));
     }
 
     /**
-     * @param userId
+     * @param customerId
      * @return
      */
-    @GetMapping("/all-transactions/{userId}")
-    public Response getAllTransactionByUserId(@PathVariable Integer userId) {
-        return Response.ok().setPayload(walletService.getAllTransactionByUserId(userId));
+    @GetMapping("/all-transactions/{customerId}")
+    public Response getAllTransactionByCustomerId(@PathVariable Integer customerId) {
+        return Response.ok().setPayload(walletService.getAllTransactionByCustomerId(customerId));
     }
 
     /**
-     * @param userId
+     * @param customerId
      * @param transactionModel
      * @return
      */
-    @PostMapping("/add/{userId}")
-    public Response addAmountToWallet(@PathVariable Integer userId,
+    @PostMapping("/add/{customerId}")
+    public Response addAmountToWallet(@PathVariable Integer customerId,
         @Valid @RequestBody TransactionModel transactionModel) {
-        return Response.ok().setPayload(walletService.addAmountToWallet(userId, transactionModel));
+        return Response.ok().setPayload(walletService.addAmountToWallet(customerId, transactionModel));
     }
 
     /**
-     * @param userId
+     * @param customerId
      * @param transactionModel
      * @return
      */
-    @PostMapping("/deduct/{userId}")
-    public Response deductAmountFromWallet(@PathVariable Integer userId,
+    @PostMapping("/deduct/{customerId}")
+    public Response deductAmountFromWallet(@PathVariable Integer customerId,
         @Valid @RequestBody TransactionModel transactionModel) {
         return Response.ok()
-            .setPayload(walletService.deductAmountFromWallet(userId, transactionModel));
+            .setPayload(walletService.deductAmountFromWallet(customerId, transactionModel));
     }
 
 }

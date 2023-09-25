@@ -14,30 +14,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/customer")
 public class CustomerController {
 
     @Autowired
     CustomerService customerService;
 
     @GetMapping("/get-all")
-    public Response getAllUsers() {
-        return Response.ok().setPayload(customerService.getAllUsers());
+    public Response getAllCustomers() {
+        return Response.ok().setPayload(customerService.getAllCustomers());
     }
 
-    @GetMapping("/{userId}")
-    public Response getUserById(@PathVariable Integer userId) {
-        return Response.ok().setPayload(customerService.getUserById(userId));
+    @GetMapping("/{id}")
+    public Response getCustomerById(@PathVariable Integer id) {
+        return Response.ok().setPayload(customerService.getCustomerById(id));
     }
 
     @PostMapping
-    public Response createNewUser(@Valid @RequestBody CustomerModel customerModel) {
-        return Response.ok().setPayload(customerService.createNewUser(customerModel));
+    public Response createNewCustomer(@Valid @RequestBody CustomerModel customerModel) {
+        return Response.ok().setPayload(customerService.createNewCustomer(customerModel));
     }
 
-    @PutMapping("/{userId}")
-    public Response updateUser(@Valid @RequestBody CustomerModel customerModel,
-        @PathVariable Integer userId) {
-        return Response.ok().setPayload(customerService.updateUser(userId, customerModel));
+    @PutMapping("/{id}")
+    public Response updateCustomer(@Valid @RequestBody CustomerModel customerModel,
+                                   @PathVariable Integer id) {
+        return Response.ok().setPayload(customerService.updateCustomer(id, customerModel));
     }
 }

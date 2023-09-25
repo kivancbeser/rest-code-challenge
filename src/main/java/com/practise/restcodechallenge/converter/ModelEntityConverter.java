@@ -1,4 +1,4 @@
-package com.practise.restcodechallenge.conventer;
+package com.practise.restcodechallenge.converter;
 
 import java.util.List;
 import java.util.stream.Collectors;

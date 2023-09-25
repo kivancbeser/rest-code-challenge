@@ -1,7 +1,7 @@
 package com.practise.restcodechallenge.service;
 
 import java.util.List;
-import com.practise.restcodechallenge.conventer.ModelEntityConverter;
+import com.practise.restcodechallenge.converter.ModelEntityConverter;
 import com.practise.restcodechallenge.entity.CustomerEntity;
 import com.practise.restcodechallenge.exception.ResourceNotFoundException;
 import com.practise.restcodechallenge.model.CustomerModel;
@@ -21,26 +21,28 @@ public class CustomerService {
     /**
      * @return
      */
-    public List<CustomerModel> getAllUsers() {
+    public List<CustomerModel> getAllCustomers() {
         List<CustomerEntity> customerEntityList = customerRepository.findAll();
         return modelEntityConverter.mapList(customerEntityList, CustomerModel.class);
     }
 
     /**
-     * @param userId
+     *
+     * @param id
      * @return
      */
-    public CustomerModel getUserById(Integer userId) {
-        CustomerEntity customerEntity = getCustomerEntity(userId);
+    public CustomerModel getCustomerById(Integer id) {
+        CustomerEntity customerEntity = getCustomerEntity(id);
         return modelEntityConverter.convert(customerEntity, CustomerModel.class);
     }
 
     /**
-     * @param userId
+     *
+     * @param id
      * @return
      */
-    public CustomerEntity getCustomerEntity(Integer userId) {
-        return customerRepository.findById(userId)
+    public CustomerEntity getCustomerEntity(Integer id) {
+        return customerRepository.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException("User is not found with given id."));
     }
 
@@ -48,7 +50,7 @@ public class CustomerService {
      * @param customerModel
      * @return
      */
-    public CustomerModel createNewUser(CustomerModel customerModel) {
+    public CustomerModel createNewCustomer(CustomerModel customerModel) {
         CustomerEntity customerEntity = modelEntityConverter.convert(customerModel,
             CustomerEntity.class);
         customerEntity.getWallet().setCustomer(customerEntity);
@@ -57,12 +59,12 @@ public class CustomerService {
     }
 
     /**
-     * @param userId
+     * @param id
      * @param customerModel
      * @return
      */
-    public CustomerModel updateUser(Integer userId, CustomerModel customerModel) {
-        CustomerEntity customerEntity = getCustomerEntity(userId);
+    public CustomerModel updateCustomer(Integer id, CustomerModel customerModel) {
+        CustomerEntity customerEntity = getCustomerEntity(id);
         customerEntity.setMobileNumber(customerModel.getMobileNumber());
         customerEntity.setEmail(customerModel.getEmail());
         customerEntity.setName(customerModel.getName());

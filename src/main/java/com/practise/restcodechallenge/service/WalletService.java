@@ -2,7 +2,7 @@ package com.practise.restcodechallenge.service;
 
 import java.time.LocalDate;
 import java.util.List;
-import com.practise.restcodechallenge.conventer.ModelEntityConverter;
+import com.practise.restcodechallenge.converter.ModelEntityConverter;
 import com.practise.restcodechallenge.entity.CustomerEntity;
 import com.practise.restcodechallenge.entity.TransactionEntity;
 import com.practise.restcodechallenge.entity.WalletEntity;
@@ -12,12 +12,14 @@ import com.practise.restcodechallenge.model.TransactionModel;
 import com.practise.restcodechallenge.model.WalletTransactionModel;
 import com.practise.restcodechallenge.repository.CustomerRepository;
 import com.practise.restcodechallenge.repository.WalletRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
+@Slf4j
 public class WalletService {
 
     @Autowired
@@ -33,46 +35,44 @@ public class WalletService {
     private CustomerRepository customerRepository;
 
     /**
-     * @param userId
+     *
+     * @param customerId
      * @return
      */
-    public WalletTransactionModel getTotalWalletAmount(Integer userId) {
-        CustomerEntity userEntity = customerService.getCustomerEntity(userId);
+    public WalletTransactionModel getTotalWalletAmount(Integer customerId) {
+        CustomerEntity userEntity = customerService.getCustomerEntity(customerId);
         return modelEntityConverter.convert(userEntity.getWallet(), WalletTransactionModel.class);
     }
 
     /**
-     * @param userId
+     * @param customerId
      * @param transactionModel
      * @return
      */
-    public WalletTransactionModel addAmountToWallet(Integer userId,
+    public WalletTransactionModel addAmountToWallet(Integer customerId,
         TransactionModel transactionModel) {
-        CustomerEntity userEntity = customerService.getCustomerEntity(userId);
+        CustomerEntity userEntity = customerService.getCustomerEntity(customerId);
         WalletEntity walletEntity = userEntity.getWallet();
 
         createCreditTransactionInWallet(transactionModel, walletEntity);
         walletRepository.save(walletEntity);
 
         CustomerEntity saveCustomerEntity = customerRepository.save(userEntity);
+        log.info("User Id: " + userEntity.getId() + " addAmountToWallet is success");
         return modelEntityConverter.convert(saveCustomerEntity.getWallet(),
             WalletTransactionModel.class);
     }
 
-    /**
-     * @param userId
-     * @param transactionModel
-     * @return
-     */
-    public WalletTransactionModel deductAmountFromWallet(Integer userId,
+    public WalletTransactionModel deductAmountFromWallet(Integer customerId,
         TransactionModel transactionModel) {
-        CustomerEntity userEntity = customerService.getCustomerEntity(userId);
+        CustomerEntity userEntity = customerService.getCustomerEntity(customerId);
         WalletEntity walletEntity = userEntity.getWallet();
 
         createDebitTransactionInWallet(transactionModel, walletEntity);
         walletRepository.save(walletEntity);
 
         CustomerEntity saveCustomerEntity = customerRepository.save(userEntity);
+        log.info("Wallet Id: " + walletEntity.getId() + " deductAmountFromWallet is success");
         return modelEntityConverter.convert(saveCustomerEntity.getWallet(),
             WalletTransactionModel.class);
     }
@@ -128,7 +128,7 @@ public class WalletService {
      * @param userId
      * @return
      */
-    public List<TransactionModel> getAllTransactionByUserId(Integer userId) {
+    public List<TransactionModel> getAllTransactionByCustomerId(Integer userId) {
         CustomerEntity userEntity = customerService.getCustomerEntity(userId);
         List<TransactionEntity> transactionEntities = userEntity.getWallet().getTransactions();
         return modelEntityConverter.mapList(transactionEntities, TransactionModel.class);

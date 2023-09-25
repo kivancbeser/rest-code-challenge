@@ -31,22 +31,22 @@ public class CustomerControllerTest {
     private MockMvc mockMvc;
 
     @MockBean
-    private CustomerRepository repository;
+    private CustomerRepository customerRepository;
 
     @Test
-    public void testGetUserById() throws Exception {
+    public void testGetCustomerById() throws Exception {
         CustomerEntity customerEntity = new CustomerEntity();
         customerEntity.setId(1);
         customerEntity.setName("test");
-        when(repository.findById(anyInt())).thenReturn(Optional.of(customerEntity));
+        when(customerRepository.findById(anyInt())).thenReturn(Optional.of(customerEntity));
 
-        this.mockMvc.perform(get("/user/1"))
+        this.mockMvc.perform(get("/customer/1"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("test")));
     }
 
     @Test
-    public void testCreateNewUser() throws Exception {
+    public void testCreateNewCustomer() throws Exception {
         CustomerModel customerModel = new CustomerModel();
         customerModel.setName("test");
         customerModel.setMobileNumber("9876543210");
@@ -55,7 +55,6 @@ public class CustomerControllerTest {
         walletModel.setWalletId(1);
         walletModel.setBalance(0);
         customerModel.setWallet(walletModel);
-
 
         CustomerEntity customerEntity = new CustomerEntity();
         customerEntity.setId(1);
@@ -67,9 +66,9 @@ public class CustomerControllerTest {
         walletEntity.setBalance(0);
         walletEntity.setCustomer(customerEntity);
         customerEntity.setWallet(walletEntity);
-        when(repository.save(any(CustomerEntity.class))).thenReturn(customerEntity);
+        when(customerRepository.save(any(CustomerEntity.class))).thenReturn(customerEntity);
 
-        this.mockMvc.perform(post("/user")
+        this.mockMvc.perform(post("/customer")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(new ObjectMapper().writeValueAsString(customerModel)))
                 .andExpect(status().isOk())

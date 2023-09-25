@@ -125,7 +125,7 @@ class WalletControllerTest {
 
         TransactionModel transactionModel = new TransactionModel();
         transactionModel.setAmount(99);
-        transactionModel.setDescription("buy goggles");
+        transactionModel.setDescription("Buy Sweet Bonanza");
         String jsonBody = new ObjectMapper().writeValueAsString(transactionModel);
 
         this.mockMvc.perform(post("/wallet/deduct/1")
@@ -143,7 +143,7 @@ class WalletControllerTest {
 
         TransactionModel transactionModel = new TransactionModel();
         transactionModel.setAmount(115);
-        transactionModel.setDescription("buying some snacks");
+        transactionModel.setDescription("Buy Sweet Bonanza Bonus Game");
         String jsonBody = new ObjectMapper().writeValueAsString(transactionModel);
 
         this.mockMvc.perform(post("/wallet/deduct/1")
