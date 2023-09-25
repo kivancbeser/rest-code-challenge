@@ -1,8 +1,3 @@
-http://localhost:8080/actuator
-http://localhost:8080/actuator/health
-http://localhost:8080/swagger-ui/index.html#/
-http://localhost:8080/h2-console/login.do
-
 [![LinkedIn][linkedin-shield]][linkedin-url] [![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)](https://sonarcloud.io/project/overview?id=kivancbeser_rest-code-challenge)
 
 <!-- PROJECT LOGO -->
@@ -124,10 +119,18 @@ mvn clean install
 ```sh
 http://localhost:8080/actuator
 ```
+ <a href="https://github.com/kivancbeser/rest-code-challenge">
+      <img src="/screenshots/ActuatorHealth.png" width="900">
+ </a>
+ 
 3. Open swagger-ui to test the rest of the API application.
 ```sh
 http://localhost:8080/swagger-ui/index.html#/
 ```
+ <a href="https://github.com/kivancbeser/rest-code-challenge">
+      <img src="/screenshots/SwaggerUi.png" width="900">
+ </a>
+
 3. Also you can check the database with H2 Console.
 ```sh
 http://localhost:8080/h2-console
@@ -136,6 +139,10 @@ Username and Password
 ```sh
 admin
 ```
+
+ <a href="https://github.com/kivancbeser/rest-code-challenge">
+      <img src="/screenshots/H2DatabaseConsole.png" width="900">
+ </a>
 
 ## Database Diagram
  <a href="https://github.com/kivancbeser/rest-code-challenge">
