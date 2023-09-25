@@ -93,6 +93,11 @@ This is an example of how to list things you need to use the software and how to
 https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html
 ```
 
+* Download and Install Maven 3.94
+```sh
+https://maven.apache.org/download.cgi
+```
+
 ### Installation
  
 1. Clone the repo
@@ -103,8 +108,10 @@ git clone https://github.com/kivancbeser/rest-code-challenge/tree/master.git
 
 1. Open the project in the IDE. (I Prefer Intellij Idea)
 
-2. Execute Maven Clean & Install
-
+2. Execute mvn clean install
+```sh
+mvn clean install
+```
 3. Start the Spring Boot Application
 
 <!-- USAGE EXAMPLES -->
