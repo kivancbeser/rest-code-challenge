@@ -43,7 +43,7 @@ public class CustomerService {
      */
     public CustomerEntity getCustomerEntity(Integer id) {
         return customerRepository.findById(id)
-            .orElseThrow(() -> new ResourceNotFoundException("User is not found with given id."));
+            .orElseThrow(() -> new ResourceNotFoundException("Customer is not found with given id."));
     }
 
     /**

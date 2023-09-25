@@ -43,7 +43,7 @@ class WalletControllerTest {
     private WalletRepository walletRepository;
 
     @Test
-    void getTotalWalletAmountByUserId() throws Exception {
+    void getTotalWalletAmountByCustomerId() throws Exception {
         setCustomerEntityWithWallet();
 
         this.mockMvc.perform(get("/wallet/1"))
@@ -70,7 +70,7 @@ class WalletControllerTest {
     }
 
     @Test
-    void getAllTransactionByUserId() throws Exception {
+    void getAllTransactionByCustomerId() throws Exception {
         setCustomerEntityWithWallet();
 
         this.mockMvc.perform(get("/wallet/all-transactions/1"))

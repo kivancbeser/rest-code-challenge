@@ -40,8 +40,8 @@ public class WalletService {
      * @return
      */
     public WalletTransactionModel getTotalWalletAmount(Integer customerId) {
-        CustomerEntity userEntity = customerService.getCustomerEntity(customerId);
-        return modelEntityConverter.convert(userEntity.getWallet(), WalletTransactionModel.class);
+        CustomerEntity customerEntity = customerService.getCustomerEntity(customerId);
+        return modelEntityConverter.convert(customerEntity.getWallet(), WalletTransactionModel.class);
     }
 
     /**
@@ -51,27 +51,27 @@ public class WalletService {
      */
     public WalletTransactionModel addAmountToWallet(Integer customerId,
         TransactionModel transactionModel) {
-        CustomerEntity userEntity = customerService.getCustomerEntity(customerId);
-        WalletEntity walletEntity = userEntity.getWallet();
+        CustomerEntity customerEntity = customerService.getCustomerEntity(customerId);
+        WalletEntity walletEntity = customerEntity.getWallet();
 
         createCreditTransactionInWallet(transactionModel, walletEntity);
         walletRepository.save(walletEntity);
 
-        CustomerEntity saveCustomerEntity = customerRepository.save(userEntity);
-        log.info("User Id: " + userEntity.getId() + " addAmountToWallet is success");
+        CustomerEntity saveCustomerEntity = customerRepository.save(customerEntity);
+        log.info("Customer Id: " + customerEntity.getId() + " addAmountToWallet is success");
         return modelEntityConverter.convert(saveCustomerEntity.getWallet(),
             WalletTransactionModel.class);
     }
 
     public WalletTransactionModel deductAmountFromWallet(Integer customerId,
         TransactionModel transactionModel) {
-        CustomerEntity userEntity = customerService.getCustomerEntity(customerId);
-        WalletEntity walletEntity = userEntity.getWallet();
+        CustomerEntity customerEntity = customerService.getCustomerEntity(customerId);
+        WalletEntity walletEntity = customerEntity.getWallet();
 
         createDebitTransactionInWallet(transactionModel, walletEntity);
         walletRepository.save(walletEntity);
 
-        CustomerEntity saveCustomerEntity = customerRepository.save(userEntity);
+        CustomerEntity saveCustomerEntity = customerRepository.save(customerEntity);
         log.info("Wallet Id: " + walletEntity.getId() + " deductAmountFromWallet is success");
         return modelEntityConverter.convert(saveCustomerEntity.getWallet(),
             WalletTransactionModel.class);
@@ -106,7 +106,7 @@ public class WalletService {
         WalletEntity walletEntity) {
         double balance = walletEntity.getBalance();
         if (balance <= 0 || balance < transactionModel.getAmount()) {
-            throw new BadRequestFoundException("User not have sufficient amount in his wallet. "
+            throw new BadRequestFoundException("Customer not have sufficient amount in his wallet. "
                 + "Kindly try again later.");
         }
 
@@ -125,12 +125,13 @@ public class WalletService {
     }
 
     /**
-     * @param userId
+     *
+     * @param id
      * @return
      */
-    public List<TransactionModel> getAllTransactionByCustomerId(Integer userId) {
-        CustomerEntity userEntity = customerService.getCustomerEntity(userId);
-        List<TransactionEntity> transactionEntities = userEntity.getWallet().getTransactions();
+    public List<TransactionModel> getAllTransactionByCustomerId(Integer id) {
+        CustomerEntity customerEntity = customerService.getCustomerEntity(id);
+        List<TransactionEntity> transactionEntities = customerEntity.getWallet().getTransactions();
         return modelEntityConverter.mapList(transactionEntities, TransactionModel.class);
     }
 }
