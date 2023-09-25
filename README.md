@@ -32,7 +32,8 @@
 * [Usage](#usage)
 * [Database Diagram](#databasediagram)
 * [Explore Rest APIs](#explorerestapis)
-  * [Account](#account)
+  * [Customer](#customer)
+  * [Wallet](#wallet)
 * [Test Results](#testresults)
 * [Done](#done)
 * [TODO](#todo)
@@ -143,7 +144,7 @@ admin
  <a href="https://github.com/kivancbeser/rest-code-challenge">
       <img src="/screenshots/H2DatabaseConsole.png" width="900">
  </a>
-
+<!-- Database Diagram -->
 ## Database Diagram
  <a href="https://github.com/kivancbeser/rest-code-challenge">
       <img src="/screenshots/RestCodeChallengeDBDiagram.png" width="1200">
@@ -153,8 +154,6 @@ admin
 ## Explore Rest APIs
 
 The app defines the following CRUD APIs.
-
-The app defines following CRUD APIs.
 
 ### Customer
 
