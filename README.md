@@ -35,8 +35,10 @@ http://localhost:8080/h2-console/login.do
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
 * [Usage](#usage)
+* [Database Diagram](#databasediagram)
 * [Explore Rest APIs](#explorerestapis)
   * [Account](#account)
+* [Test Results](#testresults)
 * [Done](#done)
 * [TODO](#todo)
 * [Roadmap](#roadmap)
@@ -128,6 +130,10 @@ Username and Password
 admin
 ```
 
+## Database Diagram
+ <a href="https://github.com/kivancbeser/rest-code-challenge">
+      <img src="/screenshots/RestCodeChallengeDBDiagram.png" width="1200">
+ </a>
 
 <!-- Explore Rest APIs -->
 ## Explore Rest APIs
@@ -137,6 +143,15 @@ The app defines the following CRUD APIs.
 You can test them using Postman.
 
 
+
+## Test Results
+ <a href="https://github.com/kivancbeser/rest-code-challenge">
+      <img src="/screenshots/CustomerControllerTestResult.png" width="1200">
+ </a>
+
+  <a href="https://github.com/kivancbeser/rest-code-challenge">
+      <img src="/screenshots/WalletControllerTestResult.png" width="1200">
+ </a>
 
 <!-- Done -->
 ## Done
