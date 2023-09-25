@@ -147,8 +147,76 @@ admin
 
 The app defines the following CRUD APIs.
 
-You can test them using Postman.
+The app defines following CRUD APIs.
 
+### Customer
+
+| Method | Url | Description | Sample Valid Request Body |
+| ------ | --- | ----------- | ------------------------- |
+| GET    | /customer/get-all | Get all Customers | |
+| GET    | /customer/{id} | Get Customer by id | |
+| POST   | /customer | Create Customer  | [JSON](#customercreate) |
+| PUT    | /customer/{id} | Update Customer | [JSON](#customerupdate) |
+
+##### <a id="customercreate">Create Customer -> /customer</a>
+```json
+{
+  "id": 1,
+  "mobileNumber": "0806549508",
+  "name": "test",
+  "email": "test@gmail.com",
+  "wallet": {
+    "id": 1,
+    "balance": 0
+  }
+}
+```
+
+##### <a id="customerupdate">Update Customer -> /customer/{id}</a>
+```json
+{
+  "id": 1,
+  "mobileNumber": "0220580217",
+  "name": "testUpdated",
+  "email": "testUpdated@gmail.com",
+  "wallet": {
+    "id": 1,
+    "balance": 0
+  }
+}
+```
+
+### Wallet
+
+| Method | Url | Description | Sample Valid Request Body |
+| ------ | --- | ----------- | ------------------------- |
+| GET    | /wallet/all-transactions/{customerId} | Get All Transactions By CustomerId | |
+| GET    | /wallet/{customerId} | Get Wallet By CustomerId | |
+| POST   | /wallet/add/{customerId} | ADd Amount From Wallet | [JSON](#addamount) |
+| POST   | /wallet/deduct/{customerId} | Deduct Amount From Wallet | [JSON](#deductamount) |
+
+##### <a id="addamount">Add Amount -> /wallet/add/{customerId} </a>
+```json
+{
+  "id": 1,
+  "type": "string",
+  "date": "2023-09-25",
+  "amount": 10,
+  "description": "string"
+}
+```
+
+##### <a id="deductamount">Deduct Amount -> /wallet/deduct/{customerId}</a>
+```json
+{
+  "id": 1,
+  "type": "string",
+  "date": "2023-09-25",
+  "amount": 10,
+  "description": "string"
+}
+```
+You can test them using Postman or SwaggerApi.
 
 
 ## Test Results
