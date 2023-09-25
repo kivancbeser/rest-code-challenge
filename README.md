@@ -165,11 +165,12 @@ You can test them using Postman.
 * Added Unit Tests
 * Sonar Scan Report
 * Created Readme file
+* Created Database Diagram
 <!-- TODO -->
 ## TODO
 * More comments for the spring side.
 * Add More Test Cases
-* 
+* Docker
 <!-- ROADMAP -->
 ## Roadmap
 
