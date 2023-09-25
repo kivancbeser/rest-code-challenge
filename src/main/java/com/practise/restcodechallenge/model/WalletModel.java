@@ -11,6 +11,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class WalletModel {
 
-    private Integer walletId;
+    private Integer id;
     private double balance;
 }

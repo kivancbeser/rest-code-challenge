@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CustomerModel {
 
-    private Integer customerId;
+    private Integer id;
 
     @Pattern(regexp = "[0-9]{10}", message = "Mobile No is Invalid")
     private String mobileNumber;

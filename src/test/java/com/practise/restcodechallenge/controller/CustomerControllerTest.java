@@ -52,7 +52,7 @@ public class CustomerControllerTest {
         customerModel.setMobileNumber("9876543210");
         customerModel.setEmail("test@gmail.com");
         WalletModel walletModel = new WalletModel();
-        walletModel.setWalletId(1);
+        walletModel.setId(1);
         walletModel.setBalance(0);
         customerModel.setWallet(walletModel);
 
