@@ -1,8 +1,3 @@
-http://localhost:8080/actuator
-http://localhost:8080/actuator/health
-http://localhost:8080/swagger-ui/index.html#/
-http://localhost:8080/h2-console/login.do
-
 [![LinkedIn][linkedin-shield]][linkedin-url] [![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)](https://sonarcloud.io/project/overview?id=kivancbeser_rest-code-challenge)
 
 <!-- PROJECT LOGO -->
@@ -37,7 +32,8 @@ http://localhost:8080/h2-console/login.do
 * [Usage](#usage)
 * [Database Diagram](#databasediagram)
 * [Explore Rest APIs](#explorerestapis)
-  * [Account](#account)
+  * [Customer](#customer)
+  * [Wallet](#wallet)
 * [Test Results](#testresults)
 * [Done](#done)
 * [TODO](#todo)
@@ -124,10 +120,18 @@ mvn clean install
 ```sh
 http://localhost:8080/actuator
 ```
+ <a href="https://github.com/kivancbeser/rest-code-challenge">
+      <img src="/screenshots/ActuatorHealth.png" width="900">
+ </a>
+ 
 3. Open swagger-ui to test the rest of the API application.
 ```sh
 http://localhost:8080/swagger-ui/index.html#/
 ```
+ <a href="https://github.com/kivancbeser/rest-code-challenge">
+      <img src="/screenshots/SwaggerUi.png" width="900">
+ </a>
+
 3. Also you can check the database with H2 Console.
 ```sh
 http://localhost:8080/h2-console
@@ -137,6 +141,10 @@ Username and Password
 admin
 ```
 
+ <a href="https://github.com/kivancbeser/rest-code-challenge">
+      <img src="/screenshots/H2DatabaseConsole.png" width="900">
+ </a>
+<!-- Database Diagram -->
 ## Database Diagram
  <a href="https://github.com/kivancbeser/rest-code-challenge">
       <img src="/screenshots/RestCodeChallengeDBDiagram.png" width="1200">
@@ -147,8 +155,74 @@ admin
 
 The app defines the following CRUD APIs.
 
-You can test them using Postman.
+### Customer
 
+| Method | Url | Description | Sample Valid Request Body |
+| ------ | --- | ----------- | ------------------------- |
+| GET    | /customer/get-all | Get all Customers | |
+| GET    | /customer/{id} | Get Customer by id | |
+| POST   | /customer | Create Customer  | [JSON](#customercreate) |
+| PUT    | /customer/{id} | Update Customer | [JSON](#customerupdate) |
+
+##### <a id="customercreate">Create Customer -> /customer</a>
+```json
+{
+  "id": 1,
+  "mobileNumber": "0806549508",
+  "name": "test",
+  "email": "test@gmail.com",
+  "wallet": {
+    "id": 1,
+    "balance": 0
+  }
+}
+```
+
+##### <a id="customerupdate">Update Customer -> /customer/{id}</a>
+```json
+{
+  "id": 1,
+  "mobileNumber": "0220580217",
+  "name": "testUpdated",
+  "email": "testUpdated@gmail.com",
+  "wallet": {
+    "id": 1,
+    "balance": 0
+  }
+}
+```
+
+### Wallet
+
+| Method | Url | Description | Sample Valid Request Body |
+| ------ | --- | ----------- | ------------------------- |
+| GET    | /wallet/all-transactions/{customerId} | Get All Transactions By CustomerId | |
+| GET    | /wallet/{customerId} | Get Wallet By CustomerId | |
+| POST   | /wallet/add/{customerId} | ADd Amount From Wallet | [JSON](#addamount) |
+| POST   | /wallet/deduct/{customerId} | Deduct Amount From Wallet | [JSON](#deductamount) |
+
+##### <a id="addamount">Add Amount -> /wallet/add/{customerId} </a>
+```json
+{
+  "id": 1,
+  "type": "string",
+  "date": "2023-09-25",
+  "amount": 10,
+  "description": "string"
+}
+```
+
+##### <a id="deductamount">Deduct Amount -> /wallet/deduct/{customerId}</a>
+```json
+{
+  "id": 1,
+  "type": "string",
+  "date": "2023-09-25",
+  "amount": 10,
+  "description": "string"
+}
+```
+You can test them using Postman or SwaggerApi.
 
 
 ## Test Results
